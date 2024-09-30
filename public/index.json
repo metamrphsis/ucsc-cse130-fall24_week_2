@@ -1,0 +1,22 @@
+[
+{
+	"uri": "http://localhost:1313/ucsc-cse130-fall24_week_2/",
+	"title": "UCSC",
+	"tags": [],
+	"description": "",
+	"content": "CSE 130 QUIZ PREP - WEEK 2 # What function is typically used to create a socket in a C program for network communication? - [ ] bind() - [ ] listen() - [x] socket() - [ ] connect() # Which C function is used to bind a socket to a specific local port number for listening? - [ ] socket() - [x] bind() - [ ] connect() - [ ] accept() # To test a server application locally, which tool can you use to send requests to your server? - [x] curl - [ ] gcc - [ ] make - [ ] vim # In a C program, which function call is responsible for setting a socket to listen for incoming connections? - [ ] socket() - [ ] connect() - [x] listen() - [ ] bind() # What is the typical function used to accept a new connection on a socket in a C server program? - [ ] connect() - [ ] bind() - [ ] listen() - [x] accept() # When dealing with file input/output operations in C, which function would you use to write formatted output to a stream? - [x] fprintf() - [ ] fwrite() - [ ] fputc() - [ ] fputs() "
+},
+{
+	"uri": "http://localhost:1313/ucsc-cse130-fall24_week_2/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "http://localhost:1313/ucsc-cse130-fall24_week_2/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]

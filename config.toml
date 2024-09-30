@@ -1,0 +1,25 @@
+baseurl                  = "https://metamrphsis.github.io/ucsc-cse130-fall24_week_2/"           # Your domain name. Must end with "/"
+languageCode             = "en-us"
+defaultContentLanguage   = "en"
+isMultilingual           = false
+title                    = "CSE 130 Quiz Prep"
+
+description = "A Custom Hugo Shortcode for Interactive Quizzes"
+
+
+theme = "hugo-theme-learn"
+
+[params]
+  description = "A Custom Hugo Shortcode for Interactive Quizzes"
+  author = "Malte Bonart"
+  showVisitedLinks = false
+  disableBreadcrumb = true
+  disableNextPrev = true
+  disableSearch = true
+  disableHistory= true
+
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+
+[minify]
+  disableHTML = true
