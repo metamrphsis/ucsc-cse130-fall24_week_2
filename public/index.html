@@ -12,19 +12,19 @@
     <title>UCSC :: CSE 130 Quiz Prep</title>
 
     
-    <link href="/ucsc-cse130-fall24_week_2/css/nucleus.css?1728615878" rel="stylesheet">
-    <link href="/ucsc-cse130-fall24_week_2/css/fontawesome-all.min.css?1728615878" rel="stylesheet">
-    <link href="/ucsc-cse130-fall24_week_2/css/hybrid.css?1728615878" rel="stylesheet">
-    <link href="/ucsc-cse130-fall24_week_2/css/featherlight.min.css?1728615878" rel="stylesheet">
-    <link href="/ucsc-cse130-fall24_week_2/css/perfect-scrollbar.min.css?1728615878" rel="stylesheet">
-    <link href="/ucsc-cse130-fall24_week_2/css/auto-complete.css?1728615878" rel="stylesheet">
-    <link href="/ucsc-cse130-fall24_week_2/css/atom-one-dark-reasonable.css?1728615878" rel="stylesheet">
-    <link href="/ucsc-cse130-fall24_week_2/css/theme.css?1728615878" rel="stylesheet">
-    <link href="/ucsc-cse130-fall24_week_2/css/hugo-theme.css?1728615878" rel="stylesheet">
+    <link href="/ucsc-cse130-fall24_week_2/css/nucleus.css?1728668267" rel="stylesheet">
+    <link href="/ucsc-cse130-fall24_week_2/css/fontawesome-all.min.css?1728668267" rel="stylesheet">
+    <link href="/ucsc-cse130-fall24_week_2/css/hybrid.css?1728668267" rel="stylesheet">
+    <link href="/ucsc-cse130-fall24_week_2/css/featherlight.min.css?1728668267" rel="stylesheet">
+    <link href="/ucsc-cse130-fall24_week_2/css/perfect-scrollbar.min.css?1728668267" rel="stylesheet">
+    <link href="/ucsc-cse130-fall24_week_2/css/auto-complete.css?1728668267" rel="stylesheet">
+    <link href="/ucsc-cse130-fall24_week_2/css/atom-one-dark-reasonable.css?1728668267" rel="stylesheet">
+    <link href="/ucsc-cse130-fall24_week_2/css/theme.css?1728668267" rel="stylesheet">
+    <link href="/ucsc-cse130-fall24_week_2/css/hugo-theme.css?1728668267" rel="stylesheet">
     
     
 
-    <script src="/ucsc-cse130-fall24_week_2/js/jquery-3.3.1.min.js?1728615878"></script>
+    <script src="/ucsc-cse130-fall24_week_2/js/jquery-3.3.1.min.js?1728668267"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -426,21 +426,28 @@ What will the content of the file `out.txt` be after the following C code is exe
 > Explanation: The code mixes buffered (`fprintf`) and unbuffered (`write`) output. The `fflush()` function forces the output buffer to write to the file immediately.
 
 ```python
-FILE *f = fopen("out.txt", "w");
-int fd = fileno(f);
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-fprintf(f, "1\n");
-write(fd, "2\n", 2);
+int main(void) {
+    FILE *f = fopen("out.txt", "w");
+    int fd = fileno(f);
 
-fflush(f);
+    fprintf(f, "1\n");
+    write(fd, "2\n", 2);
 
-fprintf(f, "3\n");
-write(fd, "4\n", 2);
+    fflush(f);
 
-fclose(f);
+    fprintf(f, "3\n");
+    write(fd, "4\n", 2);
+
+    fclose(f);
+    return EXIT_SUCCESS;
+}
 ```
 
-- [x] `1\n2\n3\n4\n`
+- [x] `2\n1\n3\n4\n`
 - [ ] `1\n3\n2\n4\n`
 - [ ] `1\n2\n4\n3\n`
 - [ ] `1234\n`
@@ -574,6 +581,23 @@ if (result == -1) fatal_error("can't close input file");
 What file permissions are assigned when the file `infile` is created by the following `open()` function call?
 
 > Explanation: The `0666` mode grants read and write permissions to the owner, group, and others when the file is created.
+> Each permission digit is an octal number (0-7) that translates to binary bits representing read (4), write (2), and execute (1) permissions: 
+
+> Read (r) = 4
+> Write (w) = 2
+> Execute (x) = 1.
+> By summing these values, you get: 
+
+> 7 (rwx) = 4 + 2 + 1 = 111 in binary
+> 6 (rw-) = 4 + 2 + 0 = 110 in binary
+> 5 (r-x) = 4 + 0 + 1 = 101 in binary
+> 4 (r--) = 4 + 0 + 0 = 100 in binary
+> For 0666, the permissions are: 
+
+> Owner: 6 (110 in binary) — read and write
+> Group: 6 (110 in binary) — read and write
+> Others: 6 (110 in binary) — read and write. 
+> So, converting 0666 to binary gives you 110110110, confirming that the read and write bits are set (1) and the execute bit is not set (0) for all categories.
 
 ```python
 int fdin = open("infile", O_RDONLY | O_CREAT, 0666);
@@ -877,19 +901,19 @@ $$
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/ucsc-cse130-fall24_week_2/js/clipboard.min.js?1728615878"></script>
-    <script src="/ucsc-cse130-fall24_week_2/js/perfect-scrollbar.min.js?1728615878"></script>
-    <script src="/ucsc-cse130-fall24_week_2/js/perfect-scrollbar.jquery.min.js?1728615878"></script>
-    <script src="/ucsc-cse130-fall24_week_2/js/jquery.sticky.js?1728615878"></script>
-    <script src="/ucsc-cse130-fall24_week_2/js/featherlight.min.js?1728615878"></script>
-    <script src="/ucsc-cse130-fall24_week_2/js/highlight.pack.js?1728615878"></script>
+    <script src="/ucsc-cse130-fall24_week_2/js/clipboard.min.js?1728668267"></script>
+    <script src="/ucsc-cse130-fall24_week_2/js/perfect-scrollbar.min.js?1728668267"></script>
+    <script src="/ucsc-cse130-fall24_week_2/js/perfect-scrollbar.jquery.min.js?1728668267"></script>
+    <script src="/ucsc-cse130-fall24_week_2/js/jquery.sticky.js?1728668267"></script>
+    <script src="/ucsc-cse130-fall24_week_2/js/featherlight.min.js?1728668267"></script>
+    <script src="/ucsc-cse130-fall24_week_2/js/highlight.pack.js?1728668267"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/ucsc-cse130-fall24_week_2/js/modernizr.custom-3.6.0.js?1728615878"></script>
-    <script src="/ucsc-cse130-fall24_week_2/js/learn.js?1728615878"></script>
-    <script src="/ucsc-cse130-fall24_week_2/js/hugo-learn.js?1728615878"></script>
+    <script src="/ucsc-cse130-fall24_week_2/js/modernizr.custom-3.6.0.js?1728668267"></script>
+    <script src="/ucsc-cse130-fall24_week_2/js/learn.js?1728668267"></script>
+    <script src="/ucsc-cse130-fall24_week_2/js/hugo-learn.js?1728668267"></script>
 
-    <link href="/ucsc-cse130-fall24_week_2/mermaid/mermaid.css?1728615878" rel="stylesheet" />
-    <script src="/ucsc-cse130-fall24_week_2/mermaid/mermaid.js?1728615878"></script>
+    <link href="/ucsc-cse130-fall24_week_2/mermaid/mermaid.css?1728668267" rel="stylesheet" />
+    <script src="/ucsc-cse130-fall24_week_2/mermaid/mermaid.js?1728668267"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

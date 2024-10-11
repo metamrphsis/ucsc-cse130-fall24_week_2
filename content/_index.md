@@ -451,6 +451,23 @@ if (result == -1) fatal_error("can't close input file");
 What file permissions are assigned when the file `infile` is created by the following `open()` function call?
 
 > Explanation: The `0666` mode grants read and write permissions to the owner, group, and others when the file is created.
+> Each permission digit is an octal number (0-7) that translates to binary bits representing read (4), write (2), and execute (1) permissions: 
+
+> Read (r) = 4
+> Write (w) = 2
+> Execute (x) = 1.
+> By summing these values, you get: 
+
+> 7 (rwx) = 4 + 2 + 1 = 111 in binary
+> 6 (rw-) = 4 + 2 + 0 = 110 in binary
+> 5 (r-x) = 4 + 0 + 1 = 101 in binary
+> 4 (r--) = 4 + 0 + 0 = 100 in binary
+> For 0666, the permissions are: 
+
+> Owner: 6 (110 in binary) — read and write
+> Group: 6 (110 in binary) — read and write
+> Others: 6 (110 in binary) — read and write. 
+> So, converting 0666 to binary gives you 110110110, confirming that the read and write bits are set (1) and the execute bit is not set (0) for all categories.
 
 ```python
 int fdin = open("infile", O_RDONLY | O_CREAT, 0666);
