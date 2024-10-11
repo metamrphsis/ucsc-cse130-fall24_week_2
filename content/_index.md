@@ -296,21 +296,28 @@ What will the content of the file `out.txt` be after the following C code is exe
 > Explanation: The code mixes buffered (`fprintf`) and unbuffered (`write`) output. The `fflush()` function forces the output buffer to write to the file immediately.
 
 ```python
-FILE *f = fopen("out.txt", "w");
-int fd = fileno(f);
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-fprintf(f, "1\n");
-write(fd, "2\n", 2);
+int main(void) {
+    FILE *f = fopen("out.txt", "w");
+    int fd = fileno(f);
 
-fflush(f);
+    fprintf(f, "1\n");
+    write(fd, "2\n", 2);
 
-fprintf(f, "3\n");
-write(fd, "4\n", 2);
+    fflush(f);
 
-fclose(f);
+    fprintf(f, "3\n");
+    write(fd, "4\n", 2);
+
+    fclose(f);
+    return EXIT_SUCCESS;
+}
 ```
 
-- [x] `1\n2\n3\n4\n`
+- [x] `2\n1\n3\n4\n`
 - [ ] `1\n3\n2\n4\n`
 - [ ] `1\n2\n4\n3\n`
 - [ ] `1234\n`
