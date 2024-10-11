@@ -575,13 +575,13 @@ if (fdout == -1) fatal_error("can't open output file");
 
 What are the permissions assigned to the file `outfile` when it is opened with the following `open()` call?
 
-> Explanation: The `0664` permission mode allows the owner to read and write, and the group to read. Others also have read permissions.
+> Explanation: The `0664` permission mode allows the owner and the group to read and write. Others also have read permissions.
 
 ```python
 int fdout = open("outfile", O_WRONLY | O_CREAT, 0664);
 ```
 
-- [x] Owner has read and write, group has read, others have read permissions
+- [x] Owner and group have read and write, others have read permissions
 - [ ] Owner has read and write, group has write, others have no permissions
 - [ ] Owner and group have read and write, others have no permissions
 - [ ] Everyone has read and write permissions
